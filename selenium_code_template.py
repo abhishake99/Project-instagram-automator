@@ -26,6 +26,35 @@ from datetime import datetime
 import undetected_chromedriver as uc
 warnings.filterwarnings("ignore")
 
+def createwebdriver(driver):
+    from selenium.webdriver.chrome.options import Options
+    from selenium import webdriver
+    from selenium.webdriver.chrome.service import Service
+
+    service = Service(r"C:\chromedriver.exe")
+    try:
+        driver.close()
+        driver.quit()
+    except:
+        pass
+    
+    print('in createwebdriver')
+    chrome_options = Options()
+    chrome_options.binary_location="C:\\chrome-win64\\chrome.exe"
+
+    try:
+        driver = webdriver.Chrome(service=service,options=chrome_options)
+    except:
+        print('IN EXCEPTION')
+        service = Service(r"C:\olddriver\chromedriver.exe")
+        driver = webdriver.Chrome(service=service,options=chrome_options)
+
+    driver.maximize_window()
+    driver.get('chrome://settings/')
+    driver.execute_script('chrome.settingsPrivate.setDefaultZoom(0.7);')
+
+    return driver
+
 def driver_initialisation_translation():
     service = Service(executable_path='C:/chromedriver.exe')
     options = webdriver.ChromeOptions()
