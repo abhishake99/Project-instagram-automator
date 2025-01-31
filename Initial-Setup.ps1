@@ -10,7 +10,7 @@ if (-not $Principal.IsInRole($AdminRole)) {
 }
 
 # Download the Winget installer
-curl -L -o Microsoft.DesktopAppInstaller.msixbundle "https://github.com/microsoft/winget-cli/releases/download/v1.9.25200/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+curl -o Microsoft.DesktopAppInstaller.msixbundle "https://github.com/microsoft/winget-cli/releases/download/v1.9.25200/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
 # Install the Winget package
 Add-AppxPackage -Path Microsoft.DesktopAppInstaller.msixbundle
@@ -25,3 +25,6 @@ winget install --id=HTTPToolKit.HTTPToolKit -e
 winget install --id=Google.Chrome -e
 winget install --id=Docker.DockerDesktop -e
 winget install --id=Astronomer.Astro -e
+winget install --id Git.Git -e
+winget install --id Microsoft.Office -e
+
