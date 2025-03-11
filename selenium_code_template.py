@@ -86,4 +86,19 @@ def driver_initialisation_undetected():
     driver = uc.Chrome(options=options)
     return driver
 
+def mobile_emulation_driver(self):
+
+        service = Service(executable_path='C://latest_chrome_driver//chromedriver.exe')
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
+        chrome_options.add_argument('--user-agent=Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36')
+        chrome_options.add_argument("--window-size=200,1000")
+        chrome_options.page_load_strategy = 'eager'
+        chrome_options.add_argument('--ignore-ssl-errors')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--ignore-certificate-errors')
+        chrome_options.add_argument("force-device-scale-factor=1.5")
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        return driver
+
 driver=driver_initialisation_normal()
